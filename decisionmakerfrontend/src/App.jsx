@@ -7,7 +7,6 @@ import PollForm from './components/PollFrom';
 const App = () => {
   return (
       <div className="min-h-screen bg-gray-50">
-        {/* Navbar stays here so it never reloads when switching pages */}
         <Navbar /> 
         
         <div className="max-w-7xl mx-auto p-6">

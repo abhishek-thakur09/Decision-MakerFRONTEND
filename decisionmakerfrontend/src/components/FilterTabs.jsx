@@ -1,4 +1,4 @@
-export default function FilterTabs({ active, setActive }) {
+const FilterTabs = ({ active, setActive })=> {
   return (
     <div className="flex gap-3">
       {["all", "active", "expired"].map((tab) => (
@@ -15,3 +15,5 @@ export default function FilterTabs({ active, setActive }) {
     </div>
   );
 }
+
+export default FilterTabs;
