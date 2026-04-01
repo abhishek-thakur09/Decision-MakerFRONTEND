@@ -9,6 +9,8 @@ const PollForm = () => {
   const [expiryMinutes, setExpiryMinutes] = useState(10);
   const navigate = useNavigate();
 
+  const [isCreating, setIsCreating] = useState(false);
+
 useEffect(() => {
     const date = new Date();
     date.setMinutes(date.getMinutes() + Number(expiryMinutes));
@@ -32,6 +34,8 @@ const handleclick = async () => {
     return;
   }
 
+  setIsCreating(true);
+
   try {
     const expiryTime = new Date();
     //Current Time + User Minutes
@@ -45,7 +49,8 @@ const handleclick = async () => {
 
     navigate("/"); 
   } catch (error) {
-    console.error("Poll Creation Failed", error.response?.data?.message || error.message);
+    console.error("Poll Creation Failed");
+    setIsCreating(false);
   }
 };
 
@@ -133,7 +138,10 @@ const handleclick = async () => {
 
       <button
         onClick={handleclick}
-        className="w-full bg-gradient-to-r from-orange-500 to-purple-600 text-white font-bold py-4 rounded-2xl text-xl"
+        disabled={isCreating}
+        className={`w-full font-bold py-4 rounded-2xl text-xl ${
+        isCreating
+        ?"bg-gray-400 cursor-not-allowed" : "bg-gradient-to-r from-orange-500 to-purple-600 text-white"}`}
       >
         Create Poll
       </button>
