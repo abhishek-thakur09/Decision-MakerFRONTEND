@@ -3,7 +3,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:9999/api",
+  baseURL: "https://dsa-hustler-backend.onrender.com/api",
+  withCredentials: true,
 });
 
 export default API;
